@@ -22,45 +22,26 @@ public class Punto1 {
         boolean terminar = false;
         int pregunta;
 
-        System.err.println("Explicacion del Punto 1: \n"
-                + "Use la interfaz List<E> para guardar una lista de números. \n"
-                + "Los números se ingresarán a través de teclado hasta que se ingrese el numero 1 y los números ingresados se transformarán en \n"
-                + "enteros con el método parseInt() o valueOf() de la clase Integer, para luego añadirlos al final de la lista con el método add().\n"
-                + "Imprima el número de elementos leídos.\n"
-                + "Luego eleve todos al cuadrado (use get() y set()).\n"
-                + "Recorra la lista y suprima los números mayores de 100 (use iterator).\n"
-                + "Ahora ordénelos (use sort() de la clase Collections).\n"
-                + "Una vez hecho esto, saque (use remove()) de la lista los números, respetando su nuevo orden e imprímalos.  \n");
-
+//        System.err.println("Explicacion del Punto 1: \n"
+//                + "Use la interfaz List<E> para guardar una lista de números. \n"
+//                + "Los números se ingresarán a través de teclado hasta que se ingrese el numero 1 y los números ingresados se transformarán en \n"
+//                + "enteros con el método parseInt() o valueOf() de la clase Integer, para luego añadirlos al final de la lista con el método add().\n"
+//                + "Imprima el número de elementos leídos.\n"
+//                + "Luego eleve todos al cuadrado (use get() y set()).\n"
+//                + "Recorra la lista y suprima los números mayores de 100 (use iterator).\n"
+//                + "Ahora ordénelos (use sort() de la clase Collections)."
+//                + "Una1 vez hecho esto, saque (use remove()) de la lista los números, respetando su nuevo orden e imprímalos.  \n");
         System.out.println("Por favor Ingrese el numero a almacenar");
-       
-        
         Scanner entradaScaner = new Scanner(System.in);
-        String entrada = entradaScaner.next();
-        
-//        while (!entrada.equals("fin")){
-//            int numero;        
-//            numero = entradaScaner.nextInt();
-//            System.err.println("prueba Entrada ");
-////            numeros.add(new ListadoNumero(numero));
-//        }
-        
-        do {
-            System.out.println("Por favor Ingrese el numero a almacenar");
-            Scanner entradaEscaner = new Scanner(System.in);
-            int numero = entradaEscaner.nextInt();
+        String entrada = "";
+
+        while (!entrada.equals("fin")) {
+            entrada = entradaScaner.next();
+            int numero;
+            numero = Integer.parseInt(entrada);
             numeros.add(new ListadoNumero(numero));
-            do {
-                System.out.println("¿Desea ingresar un nuevo numero? Por favor ingreso 0, si no, Ingrese 1");
-                Scanner teclado = new Scanner(System.in);
-                pregunta = teclado.nextInt();
-                if (pregunta == 0) {
-                    terminar = true;
-                } else {
-                    terminar = false;
-                }
-            } while (pregunta >= 2 || pregunta <= -1);
-        } while (terminar);
+        }
+
         System.out.println("***FIN Ingreso Numero***-");
         for (int j = 0; j < numeros.size(); j++) {
             ListadoNumero resultado = numeros.get(j);
@@ -71,7 +52,7 @@ public class Punto1 {
         for (int i = 0; i < numeros.size(); i++) {
             ListadoNumero resultado = numeros.get(i);
             int d = (int) (Math.pow(resultado.getNumero(), 2));
-            ListadoNumero convertir = new ListadoNumero (d);
+            ListadoNumero convertir = new ListadoNumero(d);
             numeros.set(i, convertir);
 
         }
