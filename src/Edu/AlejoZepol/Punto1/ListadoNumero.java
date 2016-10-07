@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Edu.AlejoZepol.Punto1;
+import java.io.*;
+
 /**
  *
  * @author alejozepol
@@ -11,7 +13,7 @@ package Edu.AlejoZepol.Punto1;
 public class ListadoNumero implements Comparable<ListadoNumero> {
 
     private int numero;
-
+ 
     public ListadoNumero() {
     }
 
@@ -47,4 +49,5 @@ public class ListadoNumero implements Comparable<ListadoNumero> {
             return -2; 
             
         }}
+    
 }
