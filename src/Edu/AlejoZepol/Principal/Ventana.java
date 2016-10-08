@@ -7,8 +7,6 @@ package Edu.AlejoZepol.Principal;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -27,36 +25,58 @@ public class Ventana extends JFrame {
     protected String ruta;
     protected File contenido;
 
+    public Ventana(String title) {
+        super(title);
+    }
+
     public Ventana(String titulo, String ruta, File contenido) {
         this.titulo = titulo;
         this.ruta = ruta;
         this.contenido = contenido;
+
+    }
+
+    public Ventana() {
+        super("Abrir Archivo");
+        {
+            boton = new JButton("Abrir");
+            add(boton, BorderLayout.NORTH);
+            boton.setForeground(Color.red);
+            boton.setBackground(Color.cyan);
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evento) {
+                    JFileChooser elegir = new JFileChooser();
+                    int opcion = elegir.showOpenDialog(boton);
+                    //Si presionamos el boton ABRIR en pathArchivo obtenemos el path del archivo
+                    if (opcion == JFileChooser.APPROVE_OPTION) {
+                        ruta = elegir.getSelectedFile().getPath(); //Obtiene path del archivo
+                        titulo = elegir.getSelectedFile().getName(); //obtiene nombre del archivo
+                        contenido = elegir.getSelectedFile(); // contenido del archivo
+                    }
+                }
+
+            }
+            );
+        }
     }
     
-    public Ventana()  {
-        super("Abrir Archivo");
-        boton = new JButton("Abrir");
-        add(boton, BorderLayout.NORTH);
-        boton.setForeground(Color.red);
-        boton.setBackground(Color.cyan);
-        boton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evento) {
-                JFileChooser elegir = new JFileChooser();
-                int opcion = elegir.showOpenDialog(boton);
-                //Si presionamos el boton ABRIR en pathArchivo obtenemos el path del archivo
-                if (opcion == JFileChooser.APPROVE_OPTION) {
-                    ruta = elegir.getSelectedFile().getPath(); //Obtiene path del archivo
-                    titulo = elegir.getSelectedFile().getName(); //obtiene nombre del archivo
-                    contenido = elegir.getSelectedFile(); // contenido del archivo
-                }
-            }
+    
 
-        }
-        );
+    public JButton getBoton() {
+        return boton;
+    }
+
+    public Ventana(JButton boton) {
+        this.boton = boton;
     }
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public void setBoton(JButton boton) {
+        this.boton = boton;
     }
 
     public void setTitulo(String titulo) {
@@ -79,5 +99,4 @@ public class Ventana extends JFrame {
     public void setContenido(File contenido) {
         this.contenido = contenido;
     }
-
 }
