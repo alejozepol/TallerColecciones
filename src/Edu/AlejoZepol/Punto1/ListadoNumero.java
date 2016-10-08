@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Edu.AlejoZepol.Punto1;
-import java.io.*;
 
 /**
  *

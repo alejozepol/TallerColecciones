@@ -12,11 +12,15 @@
  */
 package Edu.AlejoZepol.Punto1;
 
+import Edu.AlejoZepol.Principal.Archivo;
+import Edu.AlejoZepol.Principal.Ventana;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -26,27 +30,49 @@ public class Punto1 {
 
     public static void Punto1() {
         List<ListadoNumero> numeros = new ArrayList<>();
-        System.out.println("Por favor Ingrese el numero a almacenar");
-        Scanner entradaScaner = new Scanner(System.in);
-        String entrada = "";
+        Archivo a = new Archivo();
+        int metodo;
+        System.err.println("Seleccion el metodo de ingreso:\n Para Archivo 1 \n Para Teclado 2");
+        Scanner opcion = new Scanner(System.in);
+        metodo = opcion.nextInt();
 
-        /**
-         * Con este while se evalua la entrada al ciclo para la asigmacion de
-         * numeros al arreglo
-         *
-         * @param entrada es la varariable que recibe el objeto scaner por el
-         * teeclado
-         * @param numero es la veriable que recibe el scrip cnverito en int para
-         * agregarlo al arreglo
-         *
-         */
-        while (!entrada.equals("fin")) {
-            entrada = entradaScaner.next();
-            if (!entrada.equals("fin")) {
-                int numero;
-                numero = Integer.parseInt(entrada);
-                numeros.add(new ListadoNumero(numero));
+//        
+        if (metodo == 1) {
+            a.Archivo();
+            System.err.println(a);
 
+//            while (!entrada.equals("fin")) {
+//                entrada = entradaScaner.next();
+//                if (!entrada.equals("fin")) {
+//                    int numero;
+//                    numero = Integer.parseInt(entrada);
+//                    numeros.add(new ListadoNumero(numero));
+//
+//                }
+        } else {
+
+            System.out.println("Por favor Ingrese el numero a almacenar");
+            opcion = new Scanner(System.in);
+            String entrada = "";
+            Scanner entradaScaner = new Scanner(System.in);
+            /**
+             * Con este while se evalua la entrada al ciclo para la asigmacion
+             * de numeros al arreglo
+             *
+             * @param entrada es la varariable que recibe el objeto scaner por
+             * el teeclado
+             * @param numero es la veriable que recibe el scrip cnverito en int
+             * para agregarlo al arreglo
+             *
+             */
+            while (!entrada.equals("fin")) {
+                entrada = entradaScaner.next();
+                if (!entrada.equals("fin")) {
+                    int numero;
+                    numero = Integer.parseInt(entrada);
+                    numeros.add(new ListadoNumero(numero));
+
+                }
             }
         }
         System.out.println("***FIN Ingreso Numero***-");

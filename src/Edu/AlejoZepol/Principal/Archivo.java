@@ -5,7 +5,12 @@
  */
 package Edu.AlejoZepol.Principal;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,31 +18,47 @@ import java.io.*;
  */
 public class Archivo {
 
-    public String leerGrafico() {
+    public Archivo() {
 
-        File f;
-        javax.swing.JFileChooser j = new javax.swing.JFileChooser();
-        j.showOpenDialog(j);
+    }
+    private String aux = "";
+    private String texto = "";
+    private File f;
 
+    public String Archivo() {
+
+        Ventana v = new Ventana();
+        v.setVisible(true);
+        
         try {
-            String path = j.getSelectedFile().getAbsolutePath();
-            String lectura = "";
-            f = new File(path);
+
+            String path = v.getRuta();
+            f = v.getContenido(path);
+
             try {
-                FileReader fr = new FileReader(f);
-                BufferedReader br = new BufferedReader(fr);
-                String aux;
-                while ((aux = br.readLine()) != null) {
-                    lectura = lectura + aux + "n";
+
+                if (f != null) {
+                    FileReader archivos = new FileReader(f);
+                    BufferedReader lee = new BufferedReader(archivos);
+                    while ((aux = lee.readLine()) != null) {
+                        texto += aux + "\n";
+                    }
+                    lee.close();
                 }
-            } catch (IOException e) {
+
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, ex + ""
+                        + "\nNo se ha encontrado el archivo",
+                        "ADVERTENCIA!!!", JOptionPane.WARNING_MESSAGE);
             }
-            return lectura;
+            return texto;
         } catch (NullPointerException e) {
-            javax.swing.JOptionPane.showMessageDialog(j, "Has seleccionado cerrar programa, saliendo...");
+
+            javax.swing.JOptionPane.showMessageDialog(v, "Has seleccionado cerrar programa, saliendo...");
+
             System.exit(0);
+
         }
         return null;
-
     }
 }
