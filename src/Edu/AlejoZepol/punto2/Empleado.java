@@ -1,74 +1,90 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Mediante esta clase se creara e objeto empleado con los datos especificados en el punto 2
  */
 package Edu.AlejoZepol.punto2;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author alejozepol
+ *
  */
 public class Empleado {
 
-    private String nombre;
-    private String apellido;
-    private String fechaContratacion;
-    private int numeroEmpleado;
+    /**
+     * @identificacion numero de identificacón empleado
+     * @nombreEmpleado nombre del empleado
+     * @apellidoEmpleado Apellido del empleado
+     * @fechaContrato representa la fecha de inicio del empleado
+     *
+     */
+    protected int identificacion;
+    protected String nombreEmpleado;
+    protected String apellidoEmpleado;
+    protected Date fechaContrato;
 
-    public Empleado(String nombre, String apellido, String fechaContratacion, int numeroEmpleado) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaContratacion = fechaContratacion;
-        this.numeroEmpleado = numeroEmpleado;
+    public Empleado(int identificacion, String nombreEmpleado, String apellidoEmpleado, Date fechaContrato) {
+        this.identificacion = identificacion;
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidoEmpleado = apellidoEmpleado;
+        this.fechaContrato = fechaContrato;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getIdentificacion() {
+        return identificacion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdentificacion(int identificacion) {
+        this.identificacion = identificacion;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
     }
 
-    public String getFechaContratacion() {
-        return fechaContratacion;
+    public String getApellidoEmpleado() {
+        return apellidoEmpleado;
     }
 
-    public void setFechaContratacion(String fechaContratacion) {
-        this.fechaContratacion = fechaContratacion;
+    public void setApellidoEmpleado(String apellidoEmpleado) {
+        this.apellidoEmpleado = apellidoEmpleado;
     }
 
-    public int getNumeroEmpleado() {
-        return numeroEmpleado;
+    public Date getFechaContrato() {
+        return fechaContrato;
     }
 
-    public void setNumeroEmpleado(int numeroEmpleado) {
-        this.numeroEmpleado = numeroEmpleado;
+    public void setFechaContrato(Date fechaContrato) {
+        this.fechaContrato = fechaContrato;
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "nombre=" + nombre + ", apellido=" + apellido + ", fechaContratacion="
-                + fechaContratacion + ", numeroEmpleado=" + numeroEmpleado + '}';
+        SimpleDateFormat d = new SimpleDateFormat("dd-MM-yy");
+        Date date = d.parse("31-03-2016");
+        System.out.println(DateFormat.getDateInstance().format(date));
+
+        return "Empleado: " + "identificacion:" + identificacion
+                + " nombreEmpleado:" + nombreEmpleado
+                + " apellidoEmpleado:" + apellidoEmpleado
+                + " fechaContrato:" + fechaContrato;
     }
 
-    public int compareTo(Empleado emple) {
+    public int compareTo(Empleado emp) {
 
-        if (emple.fechaContratacion.compareTo(this.fechaContratacion) == 0) {
-            if (String.valueOf(this.numeroEmpleado).compareTo(String.valueOf(emple.numeroEmpleado)) == 0) {
-                return (emple.apellido.compareTo(this.apellido));
+        if (emp.fechaContrato.compareTo(this.fechaContrato) == 0) {
+            if (String.valueOf(this.identificacion).compareTo(String.valueOf(emp.identificacion)) == 0) {
+                return (emp.getApellidoEmpleado().compareTo(this.apellidoEmpleado));
             }
-            return (String.valueOf(this.numeroEmpleado).compareTo(String.valueOf(emple.numeroEmpleado)));
+            return (String.valueOf(this.identificacion).compareTo(String.valueOf(emp.getIdentificacion())));
         }
-        return (emple.fechaContratacion.compareTo(this.fechaContratacion));
+        return (emp.getFechaContrato().compareTo(this.fechaContrato));
     }
 }
