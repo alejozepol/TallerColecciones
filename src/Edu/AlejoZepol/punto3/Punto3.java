@@ -40,10 +40,28 @@ public class Punto3 {
             String entradaArchivo = a.getTexto();
             String[] arrayAgenda;
             arrayAgenda = entradaArchivo.split(",");
-            Agenda ag = new Agenda(entradaNombre, entradaPrimerApellido, entradaSegundoApellido, entradaTelefono, entradaEmail, entradaMovil);
 
-            agendas.add(ag);
-        } else {
+            for (int i = 0; i < arrayAgenda.length; i = i + 6) {
+                int i1, i2, i3, i4, i5;
+                i1 = i + 1;
+                i2 = i1 + 1;
+                i3 = i2 + 1;
+                i4 = i3 + 1;
+                i5 = i4 + 1;
+
+                entradaNombre = arrayAgenda[i].toString();
+                entradaPrimerApellido = arrayAgenda[i1].toString();
+                entradaSegundoApellido = arrayAgenda[i2].toString();
+                entradaTelefono = arrayAgenda[i3].toString();
+                entradaEmail = arrayAgenda[i4].toString();
+                entradaMovil = arrayAgenda[i5].toString();
+
+                Agenda ag = new Agenda(entradaNombre, entradaPrimerApellido, entradaSegundoApellido,
+                        entradaTelefono, entradaEmail, entradaMovil);
+
+                agendas.add(ag);
+            }
+        }else {
             do {
                 System.out.println("Por favor Ingrese el nombre:");
                 entradaNombre = entradaScaner.nextLine();
@@ -71,12 +89,12 @@ public class Punto3 {
             } while (!salida.equals("s"));
 
         }
-        Collections.sort(agendas);
+            Collections.sort(agendas);
 
-        for (Agenda agenda : agendas) {
-            System.out.println(agenda);
+            for (Agenda agenda : agendas) {
+                System.out.println(agenda);
+            }
+
         }
 
     }
-
-}

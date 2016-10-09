@@ -7,6 +7,8 @@ package Edu.AlejoZepol.Principal;
 
 import Edu.AlejoZepol.Punto1.Punto1;
 import Edu.AlejoZepol.punto2.Punto2;
+import Edu.AlejoZepol.punto3.Punto3;
+import Edu.AlejoZepol.punto4.Punto4;
 import java.util.Scanner;
 
 /**
@@ -28,20 +30,18 @@ public class TallerColecciones {
             numeroPunto = entradaEscaner.nextInt();
             if (numeroPunto == 1) {
                 Punto1.Punto1();
-                
+
             } else if (numeroPunto == 2) {
                 Punto2.punto2();
 
-                System.err.println("2");
-
             } else if (numeroPunto == 3) {
-                System.err.println("3");
+                Punto3.punto3();
 
             } else if (numeroPunto == 4) {
-                System.err.println("4");
+                Punto4.punto4();
             } else {
                 System.err.println("Intente de Nuevo");
             }
-        } while (numeroPunto >= 5 || numeroPunto <=0);
+        } while (numeroPunto >= 5 || numeroPunto <= 0);
     }
 }
