@@ -4,8 +4,11 @@
 package Edu.AlejoZepol.punto2;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +34,9 @@ public class Empleado {
         this.nombreEmpleado = nombreEmpleado;
         this.apellidoEmpleado = apellidoEmpleado;
         this.fechaContrato = fechaContrato;
+    }
+
+    public Empleado() {
     }
 
     public int getIdentificacion() {
@@ -68,13 +74,12 @@ public class Empleado {
     @Override
     public String toString() {
         SimpleDateFormat d = new SimpleDateFormat("dd-MM-yy");
-        Date date = d.parse("31-03-2016");
-        System.out.println(DateFormat.getDateInstance().format(date));
-
+        Date date = null;
+        date = fechaContrato;
         return "Empleado: " + "identificacion:" + identificacion
                 + " nombreEmpleado:" + nombreEmpleado
                 + " apellidoEmpleado:" + apellidoEmpleado
-                + " fechaContrato:" + fechaContrato;
+                + " fechaContrato:" + DateFormat.getDateInstance().format(date);
     }
 
     public int compareTo(Empleado emp) {
