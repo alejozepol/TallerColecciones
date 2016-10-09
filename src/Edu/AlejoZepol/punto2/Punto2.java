@@ -14,6 +14,7 @@ import Edu.AlejoZepol.Principal.Archivo;
 import Edu.AlejoZepol.Principal.Ventana;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -54,7 +55,7 @@ public class Punto2 {
              * dato de este arreglo es int
              *
              */
-            for (int i = 0; i < arrayEmpleados.length; ++i) {
+            for (int i = 0; i < arrayEmpleados.length; i=i+4) {
                 i1 = i + 1;
                 i2 = i1 + 1;
                 i3 = i2 + 1;
@@ -67,7 +68,7 @@ public class Punto2 {
                 entradaIdentificacion = Integer.parseInt(arrayEmpleados[i].toString());
                 entradaNombreEmpleado = arrayEmpleados[i1].toString();
                 entradaApellidoEmpleado = arrayEmpleados[i2].toString();
-                String fecha = arrayEmpleados[i3];
+                String fecha = arrayEmpleados[i3].toString();
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 entradaFechaContratoDate = null;
                 String date = fecha;
@@ -124,7 +125,8 @@ public class Punto2 {
             Empleado resultado = empleados.get(j);
             System.out.println(resultado.toString());
         }
-        
+        Empleado empl1 = new Empleado();
+        empleados.sort((Comparator<? super Empleado>) empl1);
 
         empleados.stream().forEach((temp)
                 -> {
