@@ -6,6 +6,7 @@
 package Edu.AlejoZepol.Principal;
 
 import Edu.AlejoZepol.Punto1.Punto1;
+import Edu.AlejoZepol.punto2.Punto2;
 import java.util.Scanner;
 
 /**
@@ -27,8 +28,10 @@ public class TallerColecciones {
             numeroPunto = entradaEscaner.nextInt();
             if (numeroPunto == 1) {
                 Punto1.Punto1();
-
+                
             } else if (numeroPunto == 2) {
+                Punto2.punto2();
+
                 System.err.println("2");
 
             } else if (numeroPunto == 3) {

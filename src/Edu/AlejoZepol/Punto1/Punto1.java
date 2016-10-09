@@ -176,13 +176,12 @@ public class Punto1 {
 
         /**
          * Mediante el metodo @sort y llamando el metodo toCompareto de la clase
-         * LsitadoNumeros se evaua cada dato del ArrayList para poder ordenar e
+         * ListadoNumeros se evaua cada dato del ArrayList para poder ordenar e
          * imprimirla lista ordenada
          */
         Collections.sort(numeros);
 
-        System.out.println(
-                "***Fin sort***");
+        System.out.println("***Fin sort***");
         numeros.stream().forEach((temp) -> {
                     System.out.println(temp);
                 }
